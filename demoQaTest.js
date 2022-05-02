@@ -1,6 +1,13 @@
-// npm install selenium webdriver
 
-const webdriver = require('selenium-webdriver');
-let driver = new webdriver.Builder().forBrowser('chrome').build();
 
-driver.get('https://demoqa.com/automation-practice-form');
+const { webdriver, Builder, By, Key, until } = require('selenium-webdriver');
+require('chromedriver');
+
+async function example () {
+    let driver = await new Builder().forBrowser('chrome').build();
+    await driver.get('https://demoqa.com/automation-practice-form');
+    await driver.findElement(By.id('firstName')).sendKeys('Voornaam');
+    await driver.quit();
+}
+
+example ();
