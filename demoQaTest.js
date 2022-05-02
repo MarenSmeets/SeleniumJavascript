@@ -11,7 +11,7 @@ async function inputForm () {
     await driver.findElement(By.id('userEmail')).sendKeys('email@adr.es');
     await driver.findElement(By.css('label[for="gender-radio-2"]')).click();
     await driver.findElement(By.id('userNumber')).sendKeys('0123456789');
-                
+
     
     await driver.quit();
 }
