@@ -1,6 +1,8 @@
 
 
 const { webdriver, Builder, By, Key, until } = require('selenium-webdriver');
+const { expect, should } = require('chai');
+const { assert } = require('console');
 require('chromedriver');
 
 async function inputForm () {
@@ -10,10 +12,10 @@ async function inputForm () {
     await driver.findElement(By.id('lastName')).sendKeys('Familienaam');
     await driver.findElement(By.id('userEmail')).sendKeys('email@adr.es');
     await driver.findElement(By.css('label[for="gender-radio-2"]')).click();
-    await driver.findElement(By.id('userNumber')).sendKeys('0123456789');
+    await driver.findElement(By.id('userNumber')).sendKeys('0123456789', Key.RETURN);
+    expect(await driver.findElement(By.id('example-modal-sizes-title-lg')), 'pop-up does not exist').to.exist;
 
-    
-    await driver.quit();
+    // await driver.quit();
 }
 
 inputForm ();
